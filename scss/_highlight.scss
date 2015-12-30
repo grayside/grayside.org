@@ -2,6 +2,7 @@
 
 Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
 
+Hacked for Grayside.org by Grayside (@grayside_sb) - ©2015 Adam Ross
 */
 
 .hljs {
@@ -10,6 +11,9 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   padding: 0.5em;
   background: #23241f;
   -webkit-text-size-adjust: none;
+  letter-spacing: 0.8px;
+  line-height: 120%;
+  word-spacing: 110%;
 }
 
 .hljs,
