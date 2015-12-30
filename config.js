@@ -3,11 +3,11 @@ var config = {
     baseUrl: process.env.BASE_URL || '', // '' for relative links
     site: {
       url: process.env.SITE_URL || 'http://example.com', // full site url
-      title: 'Grayside',
+      title: 'Grayside.org',
       comments: true,
       // @todo complete support for social icons.
       show_social_icons: false,
-      disqus: process.env.DISQUS || 'example',
+      disqus: process.env.DISQUS || 'grayside',
       googleAnalytics: process.env.GOOGLE_ANALYTICS || '123457'
     }
   },
@@ -15,7 +15,7 @@ var config = {
     baseUrl: process.env.DEV_BASE_URL || '', // '' for relative links
     site: {
       url: process.env.DEV_SITE_URL || 'http://localhost:8000', // full site url
-      title: 'Grayside',
+      title: 'Grayside.org',
       comments: true,
       // @todo complete support for social icons.
       show_social_icons: false,
