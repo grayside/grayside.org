@@ -5,4 +5,4 @@ priority: 0.4
 linkTitle: Home
 ---
 
-This is the home page.
+Technical Musings 
