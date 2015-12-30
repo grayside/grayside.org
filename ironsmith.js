@@ -1,23 +1,29 @@
 var Metalsmith = require('metalsmith');
-var metadata = require('metalsmith-metadata');
+var http = require('http');
+var join = require('path').join;
+var swig = require('swig');
+
+// Metalsmith Plugins
+var aliases = require('metalsmith-alias');
+var collections = require('metalsmith-collections');
+var drafts = require('metalsmith-drafts');
 var excerpts = require('metalsmith-better-excerpts');
 var feed = require('metalsmith-feed');
-var writemetadata = require('metalsmith-writemetadata');
-var collections = require('metalsmith-collections');
-var markdown = require('metalsmith-markdown');
+var htmlMinifier = require("metalsmith-html-minifier");
 var inPlace = require('metalsmith-in-place');
 var layouts = require('metalsmith-layouts');
-var permalinks = require('metalsmith-permalinks');
-var tags = require('metalsmith-tags');
-var drafts = require('metalsmith-drafts');
-var pagination = require('metalsmith-pagination');
+var markdown = require('metalsmith-markdown');
+var metadata = require('metalsmith-metadata');
 var metallic = require('metalsmith-metallic');
-var htmlMinifier = require("metalsmith-html-minifier");
-var swig = require('swig');
-var join = require('path').join;
-var config = require('./config.js');
-var http = require('http');
+var pagination = require('metalsmith-pagination');
+var permalinks = require('metalsmith-permalinks');
 var sitemap = require('metalsmith-sitemap');
+var tags = require('metalsmith-tags');
+var typography = require('metalsmith-typography');
+var writemetadata = require('metalsmith-writemetadata');
+
+// Local libraries
+var config = require('./config.js');
 
 swig.setDefaults({
   cache: false
@@ -57,6 +63,7 @@ module.exports = function (production) {
     // Does not process if moved after markdown.
     .use(metallic())
     .use(markdown())
+    .use(typography())
     .use(permalinks({
         pattern: 'blog/:title',
         relative: false
@@ -84,6 +91,7 @@ module.exports = function (production) {
       sortBy: 'data',
       reverse: true
     }))
+    .use(aliases({}))
     // render content into page layouts
     .use(layouts({
       engine: 'swig',

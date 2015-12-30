@@ -14,6 +14,7 @@
     "gulp-uglify": "^1.2.0",
     "lodash.assign": "^3.2.0",
     "metalsmith": "^2.1.0",
+    "metalsmith-alias": "0.0.2",
     "metalsmith-better-excerpts": "^0.1.5",
     "metalsmith-collections": "^0.7.0",
     "metalsmith-drafts": "0.0.1",
@@ -28,6 +29,7 @@
     "metalsmith-permalinks": "^0.4.0",
     "metalsmith-sitemap": "^1.0.0",
     "metalsmith-tags": "^1.1.0",
+    "metalsmith-typography": "^0.1.1",
     "metalsmith-writemetadata": "0.4.5",
     "swig": "^1.4.2"
   }
