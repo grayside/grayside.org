@@ -63,7 +63,9 @@ module.exports = function (production) {
     }))
     .use(feed({collection: 'posts'}))
     .use(excerpts({
-      pruneLength: 160
+      pruneLength: 260,
+      stripTags: false,
+      moreRegExp: /\s*<!--\s*break\s*-->/i
     }))
     .use(pagination({
       'collections.posts': {
