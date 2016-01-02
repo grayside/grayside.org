@@ -17,6 +17,16 @@ var images = function() {
 gulp.task('images', ['clean'], images);
 gulp.task('images-watch', images);
 
+var favicon = function() {
+  return gulp.src([
+    'favicon/**'
+  ])
+  .pipe(gulp.dest('build'));
+}
+
+gulp.task('favicon', ['clean'], favicon);
+gulp.task('favicon-watch', favicon);
+
 gulp.task('clean', function () {
   return del(['build']);
 });
@@ -80,6 +90,7 @@ gulp.task('metalsmith:prod-watch', metalsmithProd);
 
 gulp.task('watch', function () {
   gulp.watch(['images/*'], ['images-watch']);
+  gulp.watch(['favicon/*'], ['favicon-watch']);
   gulp.watch('./js/**/*.js', ['scripts-watch']);
   gulp.watch('./scss/**/*.scss', ['styles-watch']);
   gulp.watch(['./src/**/*.html', './src/**/*.md', './layouts/**/*.html'], ['metalsmith-watch']);
@@ -87,12 +98,13 @@ gulp.task('watch', function () {
 
 gulp.task('watch:prod', function () {
   gulp.watch(['images/*'], ['images-watch']);
+  gulp.watch(['favicon/*'], ['favicon-watch']);
   gulp.watch('./js/**/*.js', ['scripts-watch']);
   gulp.watch('./scss/**/*.scss', ['styles-watch']);
   gulp.watch(['./src/**/*.html', './src/**/*.md', './layouts/**/*.html'], ['metalsmith:prod-watch']);
 });
 
-gulp.task('build', ['images', 'styles', 'scripts', 'metalsmith']);
-gulp.task('build:prod', ['images', 'styles', 'scripts', 'metalsmith:prod']);
+gulp.task('build', ['favicon', 'images', 'styles', 'scripts', 'metalsmith']);
+gulp.task('build:prod', ['favicon', 'images', 'styles', 'scripts', 'metalsmith:prod']);
 gulp.task('preview', ['watch', 'build', 'server']);
 gulp.task('default', ['watch', 'build', 'server']);
