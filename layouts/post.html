@@ -1,19 +1,21 @@
 {% extends './default.html' %}
 
 {% block content %}
-<div class="post">
+<div class="post" itemscope itemtype="https://schema.org/Blog">
   <header class="post-header mb2">
-    <h1>{{ title }}</h1>
-    <span class="post-meta">{{ date | date('M j, Y') }}</span><br>
-    <span class="post-meta small">
+    <h1 itemprop="headline">{{ title }}</h1>
+    <span class="post-meta" itemprop="datePublished"><time datetime="{{ date }}">{{ date | date('M j, Y') }}</time></span><br>
+    <meta itemprop="timeRequired" content="P{{ readingTime }}M">
+    <span class="post-meta small">{{ wordCount }} words, {{ readingTime }} minutes to read</span><br>
+    <span class="post-meta small" itemprop="keywords">
     {% for tag in tags %}<a href="{{baseUrl}}/tags/{{tag | replace(' ', '-')}}" title="{{tag}}">{{tag}}</a>{% if !loop.last %}, {% endif %}{% endfor %}
     </span>
   </header>
-  <article class="post-content py2">
+  <article class="post-content py2" itemprop="text">
   {{contents | safe}}
   </article>
   {% if site.comments && site.disqus %}
-    <div class="post-content">
+    <div class="post-content" itemprop="comment">
       <div id="disqus_thread"></div>
     </div>
   {% endif %}

@@ -20,6 +20,7 @@ var permalinks = require('metalsmith-permalinks');
 var sitemap = require('metalsmith-sitemap');
 var tags = require('metalsmith-tags');
 var typography = require('metalsmith-typography');
+var wordCount = require('metalsmith-word-count');
 var writemetadata = require('metalsmith-writemetadata');
 
 // Local libraries
@@ -64,6 +65,10 @@ module.exports = function (production) {
     .use(metallic())
     .use(markdown())
     .use(typography())
+    .use(wordCount({
+      speed: 350,
+      raw: true
+    }))
     .use(permalinks({
         pattern: 'blog/:title',
         relative: false
